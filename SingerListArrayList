@@ -1,0 +1,99 @@
+
+package singerlistarraylist;
+
+import java.util.Scanner;
+
+
+public class SingerListArrayList {
+
+   private static Singers singers = new Singers();
+   private static Scanner scanner = new Scanner(System.in);
+   
+   public static void singer_search () {
+       System.out.println("Enter name of singer would like search");
+       String isim = scanner.nextLine();
+       singers.singer_search(isim);
+       
+   }
+   
+   
+   public static void singer_remove () {
+       System.out.println("Enter position would like to remove");
+       int position = scanner.nextInt();
+       singers.singer_remove(position-1);
+       
+   }
+   
+   public static void upgrade_singer () {
+       System.out.println("Enter position (1,2,3...)");
+       int position = scanner.nextInt();
+       scanner.nextLine();
+       System.out.println("Enter new name of singer");
+       String new_name = scanner.nextLine();
+       singers.upgrade_singer(new_name, position - 1 );
+   }
+   
+   public static void add_singer () {
+            System.out.println("Enter name of singer would like to add");
+            String name = scanner.nextLine();
+            singers.add_singer(name);
+}
+   
+   public static void show_singers (){
+      singers.show_singers();
+   }
+   
+   public static void show_menu (){
+       System.out.println("\t 0-Show main menu");
+       System.out.println("\t 1-Show singers");
+       System.out.println("\t 2-Add new singer");
+       System.out.println("\t 3-Upgrade singer");
+       System.out.println("\t 4-Singer remove");
+       System.out.println("\t 5-Singer search");
+       System.out.println("\t 6-Exit");
+       
+   }
+    public static void main(String[] args) {
+        System.out.println("Singer Application"); //\t writing more from right side
+        
+        boolean exit = false;
+        int doit;
+        
+        while (!exit){ //not exit means exit is true
+            System.out.println("What would you like to do?");
+            show_menu ();
+            doit = scanner.nextInt();
+            scanner.nextLine();
+            
+            switch (doit){
+                case 0 :
+                show_menu ();
+                break;
+                case 1 :
+                show_singers ();
+                break;
+                case 2 :
+                add_singer ();
+                break;
+                case 3 :
+                upgrade_singer ();
+                break;
+                case 4 :
+                singer_remove ();
+                break;
+                case 5 :
+                singer_search ();
+                break;
+                case 6 :
+                exit = true;
+                    System.out.println("Exitting");
+                break;
+                        
+            }
+        }
+        
+        
+        
+    }
+    
+}
